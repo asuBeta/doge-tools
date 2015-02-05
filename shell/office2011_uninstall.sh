@@ -1,6 +1,11 @@
 #!/bin/sh
 
-# this script will remove microsoft office
+# author: qiutao
+# date: 2015/2/6
+
+
+# this script will remove microsoft office for mac 2011 (Only test with this version==)
+# and my mac os version is 10.10....
 
 # Display a simple welcome message first.
 echo ""
@@ -76,8 +81,7 @@ do
 	pkgutil --forget $ARECEIPT
 done
 
-hostid=`whoami`
-echo "Microsoft Office files in /Users/${hostid}/ will not be deleted..."
+echo "Microsoft Office files in /Users/username/ will not be deleted..."
 echo "You can delete them by yourself if needed.\n"
 
 echo "Done."
