@@ -2,13 +2,16 @@
 
 # author: qiutao
 # date: 2015/2/1
-# version: 1.0
+# version: 1.1
+
+# update history
+# 2015/4/20 change mount path the desktop
 
 # mac os mount external medias with ntfs format on READ ONLY by default
 # this program will eject the ntfs medias and remount them on READ & WRITE
 
 # variables
-MAIN_PATH="/Users/qtao/ntfs"
+MAIN_PATH="/Users/qtao/Desktop"
 DISK1=ENTERTAINMENT
 DISK2="STUDY&WORK"
 TRGFILE="remounted.trg"
@@ -25,7 +28,7 @@ fi
 
 if [ -d /Volumes/${DISK2} ]; then
 	disk_id2=`diskutil info /Volumes/${DISK2} | grep Node | awk '{print $3}'`
-	echo "/Volumes/${DISK2} has been found...Node-> ${disk_id1}"
+	echo "/Volumes/${DISK2} has been found...Node-> ${disk_id2}"
 else
 	echo "we have not found /Volumes/${DISK2}, program will exit for safty..."
 	echo "exited"
@@ -74,7 +77,7 @@ fi
 echo "${disk_id2} has been remounted! path: ${MAIN_PATH}/${DISK2}"
 
 if [ ! -d "${MAIN_PATH}/${DISK1}" ]; then
-	sudo mkdir "${MAIN_PATH}/${DISK1}"
+	mkdir "${MAIN_PATH}/${DISK1}"
 fi
 
 step3=`sudo mount_ntfs -o rw,nobrowse ${disk_id1} "${MAIN_PATH}/${DISK1}"`

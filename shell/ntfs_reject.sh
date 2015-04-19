@@ -4,10 +4,13 @@
 # date: 2015/2/1
 # version: 1.0
 
+# history
+# 2015/4/20 change mount folder to desktop
+
 # reject medias mounted by /Users/qtao/ntfs_remount.sh
 
 # variables
-MAIN_PATH="/Users/qtao/ntfs"
+MAIN_PATH="/Users/qtao/Desktop"
 DISK1=ENTERTAINMENT
 DISK2="STUDY&WORK"
 TRGFILE="remounted.trg"
