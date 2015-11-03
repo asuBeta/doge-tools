@@ -11,8 +11,8 @@
 
 # variables
 MAIN_PATH="/Users/qtao/Desktop"
-DISK1=ENTERTAINMENT
-DISK2="STUDY&WORK"
+DISK1=ENT
+DISK2=STU
 TRGFILE="remounted.trg"
 
 # test whether the external medias have been mounted

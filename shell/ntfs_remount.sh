@@ -12,8 +12,8 @@
 
 # variables
 MAIN_PATH="/Users/qtao/Desktop"
-DISK1=ENTERTAINMENT
-DISK2="STUDY&WORK"
+DISK1=ENT
+DISK2=STU
 TRGFILE="remounted.trg"
 
 # test whether the external medias have been mounted
@@ -54,9 +54,9 @@ fi
 
 # build path for external media remount
 
-if [ ! -d ${MAIN_PATH} ]; then
-	mkdir ${MAIN_PATH}
-fi
+# if [ ! -d ${MAIN_PATH} ]; then
+# 	mkdir ${MAIN_PATH}
+# fi
 
 
 if [ ! -d "${MAIN_PATH}/${DISK2}" ]; then
@@ -65,7 +65,7 @@ fi
 
 # remount
 
-step2=`sudo mount_ntfs -o rw,nobrowse ${disk_id2} "${MAIN_PATH}/${DISK2}"`
+step2=`sudo mount_ntfs -o nobrowse,rw ${disk_id2} "${MAIN_PATH}/${DISK2}"`
 
 ret=$?
 if [ $ret -ne 0 ]; then
@@ -80,7 +80,7 @@ if [ ! -d "${MAIN_PATH}/${DISK1}" ]; then
 	mkdir "${MAIN_PATH}/${DISK1}"
 fi
 
-step3=`sudo mount_ntfs -o rw,nobrowse ${disk_id1} "${MAIN_PATH}/${DISK1}"`
+step3=`sudo mount_ntfs -o nobrowse,rw ${disk_id1} "${MAIN_PATH}/${DISK1}"`
 
 ret=$?
 if [ $ret -ne 0 ]; then
