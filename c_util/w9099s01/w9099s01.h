@@ -11,6 +11,9 @@
 
 #define DOT "."                         // a dot
 
-extern long double flt_mltply(char* str1, char* str2);
+extern void w9099s01_ltrim(char *str);
+extern void w9099s01_rtrim(char *str);
+extern void w9099s01_trim(char *str);
+extern long double w9099s01_flt_mltply(char* str1, char* str2);
 
 #endif /* w9099s01_h */

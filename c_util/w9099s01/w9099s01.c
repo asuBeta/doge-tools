@@ -14,13 +14,72 @@
 
 #include "w9099s01.h"
 
+
+/**
+* <p>Remove the spaces in the LEFT side of a string.</p>
+*/
+
+void w9099s01_ltrim(char *str){
+    
+    char *tmp = NULL;
+    
+    tmp = str;
+    
+    // do nothing when empty string comes
+    if (tmp == NULL || strlen(tmp) == 0)
+        return;
+    
+    while (*tmp == 0x20)
+        tmp++;
+    
+    sprintf(str, "%s", tmp);
+}
+
+
+/**
+* <p>Remove the spaces in the RIGHT side of a string.</p>
+*/
+
+void w9099s01_rtrim(char *str){
+    
+    unsigned long i_loop = 0;
+    
+    // do nothing when empty string comes
+    if (str == NULL || strlen(str) == 0)
+        return;
+    
+    for(i_loop = strlen(str); i_loop > 0; i_loop--){
+        if(str[i_loop - 1] == 0x20)
+            str[i_loop - 1] = 0x00;
+        else
+            break;
+    }
+}
+
+
+/**
+* <p>Remove the space in both left and right sides of a string,
+* <p>excpet those inside.<p>
+*/
+
+void w9099s01_trim(char *str){
+    
+    // remove the spaces in the left side
+    w9099s01_ltrim(str);
+    
+    // remove the spaces in the right side
+    w9099s01_rtrim(str);
+}
+
+
+
 /**
 * <p>A function for high precision multiplication of two float numbers.</p>
 * <li>input: two strings of float numbers, eg, 999.9999</li>
 * <li>output: the multiplication result of inputs in long doule type</li>
 */
 
-long double flt_mltply(char* num1, char* num2){
+long double w9099s01_flt_mltply(char* num1, char* num2){
     
     // variable declares
     long double ld_x1y1 = 0.0;
