@@ -1,6 +1,5 @@
 //
 //  w9099s01.h
-//  testc
 //
 //  Created by Qiu Tao on 3/25/16.
 //  Copyright © 2016 Qiu Tao. All rights reserved.
@@ -8,6 +7,11 @@
 
 #ifndef w9099s01_h
 #define w9099s01_h
+
+#define W9099S01_SWAP(x,y) \
+        (x) = (x)^(y);\
+        (y) = (x)^(y);\
+        (x) = (x)^(y);                  // swap two numbers
 
 #define DOT "."                         // a dot
 
