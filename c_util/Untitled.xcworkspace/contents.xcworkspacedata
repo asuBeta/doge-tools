@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:../../mygit/c_util/w9099s01/test.c">
+   </FileRef>
+   <FileRef
+      location = "container:../../mygit/c_util/w9099s01/w9099s01.c">
+   </FileRef>
+   <FileRef
+      location = "container:../../mygit/c_util/w9099s01/w9099s01.h">
+   </FileRef>
+</Workspace>
