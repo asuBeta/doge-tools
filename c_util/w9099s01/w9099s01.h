@@ -8,6 +8,7 @@
 #ifndef w9099s01_h
 #define w9099s01_h
 
+
 // macro definitons
 #define W9099S01_SWAP(x,y) \
         (x) = (x)^(y);\
