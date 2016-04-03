@@ -1,6 +1,5 @@
 //
 //  w9099s01.c
-//  testc
 //
 //  Created by Qiu Tao on 3/25/16.
 //  Copyright © 2016 Qiu Tao. All rights reserved.
@@ -81,6 +80,8 @@ void w9099s01_trim(char *str){
 long double w9099s01_flt_mltply(char* num1, char* num2){
     
     // variable declares
+    int sgn_flg = 1;    // sign flag for result
+    
     long double ld_x1y1 = 0.0;
     long double ld_x1y2 = 0.0;
     long double ld_x2y1 = 0.0;
@@ -99,14 +100,18 @@ long double w9099s01_flt_mltply(char* num1, char* num2){
     unsigned int i_pos_x = 0;
     unsigned int i_pos_y = 0;
     
+    // mutiply the sign flag with -1 if argument is negative
+    if (num1[0] == '-') sgn_flg *= -1;
+    if (num2[0] == '-') sgn_flg *= -1;
+    
     x1 = strtok(num1, DOT);     // integer part of number1
     x2 = strtok(NULL, DOT);     // decimal part of number1
     y1 = strtok(num2, DOT);     // integer part of number2
     y2 = strtok(NULL, DOT);     // decimal part of number1
     
-    ll_x1 = atoll(x1);
+    ll_x1 = llabs(atoll(x1));
     ll_x2 = atoll(x2);
-    ll_y1 = atoll(y1);
+    ll_y1 = llabs(atoll(y1));
     ll_y2 = atoll(y2);
     
     // obtain the decimal place
@@ -120,7 +125,7 @@ long double w9099s01_flt_mltply(char* num1, char* num2){
     ld_x2y1 = (long double)(ll_x2 * ll_y1) / (long double)pow(10, i_pos_x);
     ld_x2y2 = (long double)(ll_x2 * ll_y2) / (long double)pow(10, i_pos_x + i_pos_y);
     
-    
-    return ld_x1y1 + ld_x1y2 + ld_x2y1 + ld_x2y2;
+
+    return (ld_x1y1 + ld_x1y2 + ld_x2y1 + ld_x2y2) * sgn_flg;
 }
 
