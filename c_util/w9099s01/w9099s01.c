@@ -25,7 +25,7 @@ void w9099s01_ltrim(char *str){
     
     tmp = str;
     
-    // do nothing when empty string comes
+    // do nothing when an empty string comes
     if (tmp == NULL || strlen(tmp) == 0)
         return;
     
@@ -42,9 +42,9 @@ void w9099s01_ltrim(char *str){
 
 void w9099s01_rtrim(char *str){
     
-    unsigned long i_loop = 0;
+    size_t i_loop = 0;
     
-    // do nothing when empty string comes
+    // do nothing when an empty string comes
     if (str == NULL || strlen(str) == 0)
         return;
     
@@ -70,7 +70,6 @@ void w9099s01_trim(char *str){
     // remove the spaces in the right side
     w9099s01_rtrim(str);
 }
-
 
 
 /**
