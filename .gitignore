@@ -1,1 +1,24 @@
+# xcode project folder
 *.xcodeproj
+
+# Object files
+*.o
+*.obj
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects  
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.out
+
+# Debug files
+*.dSYM/
+
