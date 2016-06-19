@@ -24,7 +24,7 @@ int socket_server_udp()
 {
 	int sock = 0;
 	int yes = 1;
-	char buf[2048];
+    char buf[1500 - 28]; // MTU(max transfer unit) = 1500
 	struct sockaddr_in addr;
 	
 	memset(buf, 0x00, sizeof(buf));
