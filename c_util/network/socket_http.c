@@ -8,20 +8,22 @@
 #include <netdb.h>
 
 int socket_server();
-int socket_client();
+int socket_client(const char *deststr);
+int socket_server_udp();
+int socket_client_udp();
 
 int main()
 {
-    int ret 0;
+    int ret = 0;
     
-    // ret = socket_server();
-    ret = socket_client("127.0.0.1");
+    ret = socket_server();
+    //ret = socket_client("127.0.0.1");
     
     return ret;
 }
 
 
-// socket server
+// tcp socket server: create->bind->listen->accept->recieve/send->close
 int socket_server()
 {
     int sock0;
@@ -66,7 +68,7 @@ int socket_server()
              "HTTP/1.1 200 OK\r\n"
              "Content-Type: text/html\r\n"
              "\r\n"
-             "HELLO\r\n");
+             "<h1 style='color:red' >Hello, World!</h1>\r\n");
     
     while (1) {
         len = sizeof(client);
@@ -97,14 +99,15 @@ int socket_server()
     close(sock0);
     
     return ret;
-
+    
 }
 
+// tcp socket client: create->connect->recieve/send->close
 int socket_client(const char *deststr)
 {
     struct sockaddr_in server;
     int sock;
-    char buf[32];
+    char buf[2048];
     unsigned int **addrptr;
     
     // use TCP
@@ -181,7 +184,7 @@ int socket_client(const char *deststr)
         }
         
         // print output(1:standard output)
-        write(1, buf, n);
+        write(1, buf, strlen(buf));
     }
     
     close(sock);
