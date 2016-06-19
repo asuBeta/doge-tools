@@ -174,7 +174,7 @@ int socket_client(const char *deststr)
     // http receive
     while (n > 0) {
         memset(buf, 0, sizeof(buf));
-        ssize_t n = read(sock, buf, sizeof(buf));
+        n = read(sock, buf, sizeof(buf));
         if (n < 0) {
             perror("read");
             return 1;
