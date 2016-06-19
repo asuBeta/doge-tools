@@ -8,24 +8,23 @@
 
 int main(){
     
-    char str1[20];
-    char str2[20];
-    long double result = 0;
-//    long double ld_x = 0.0;
-//    long double ld_y = 0.0;
+    FILE *file = NULL;
+    char buff[1024];
     
-    printf("input str1: ");
-    scanf("%s", str1);
+    memset(buff, 0x00, sizeof(buff));
     
-    printf("input str2: ");
-    scanf("%s", str2);
+    file = fopen("/Users/qtao/mygit/c_util/w9099s01/test.csv", "r");
     
-//    ld_x = atof(str1);
-//    ld_y = atof(str2);
+    if(file == NULL) exit(-1);
     
-    result = w9099s01_flt_mltply(str1, str2);
-    printf("###result = %.18Lf\n", result);
-//    printf("###result2 = %.18Lf\n", ld_x * ld_y);
+    while (fgets(buff, 1024, file) != NULL){
+        printf("%s", buff);
+    }
+    
+    if (file != NULL) {
+        fclose(file);
+        printf("file colsed!\n");
+    }
     
     return 0;
 }
