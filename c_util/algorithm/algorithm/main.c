@@ -11,11 +11,12 @@
 #include <string.h>
 #include <time.h>
 #include <sys/time.h>
+#include <stdarg.h>
 
 #include "sort.h"
 
-#define ARR_LEN 20000000
-#define RAN_DEF 200000000
+#define ARR_LEN 200000
+#define RAN_DEF 2000000
 //#define UT_DEBUG
 
 static void get_sysdt(char *date){
@@ -43,13 +44,27 @@ static void get_sysdt(char *date){
     
 }
 
+// print function for debug. equals to "[timestamp]" + printf
+static void debug_print(char *fmt, ...)
+{
+    va_list args;
+    char timestamp[17 + 1];
+    
+    memset(timestamp, 0x00, sizeof(timestamp));
+    
+    get_sysdt(timestamp);
+    printf("[%s]", timestamp);
+    
+    va_start(args, fmt);
+    vfprintf(stdout, fmt, args);
+    va_end(args);
+}
+
+
 int main(int argc, char *argv[]) {
     
     int i = 0;
     int arr[ARR_LEN];
-    char timestamp[17 + 1];
-    
-    memset(timestamp, 0x00, sizeof(timestamp));
     
     printf("###sort test###\n");
     
@@ -72,8 +87,7 @@ int main(int argc, char *argv[]) {
     
     
     // time before sort
-    get_sysdt(timestamp);
-    printf("[%s]sort begins...\n", timestamp);
+    debug_print("sort begins...\n");
     
     // sort
     quick_sort(arr, 0, ARR_LEN - 1);
@@ -82,9 +96,7 @@ int main(int argc, char *argv[]) {
     //bubble_sort(arr, ARR_LEN);
     
     // time after sort
-    get_sysdt(timestamp);
-    
-    printf("[%s]sort ends...\n", timestamp);
+    debug_print("sort ends...\n");
 
 #ifdef UT_DEBUG
     printf("[sortted array dump]\n");
